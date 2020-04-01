@@ -3,7 +3,7 @@ import React from "react";
 const navStyle ={
     backgroundColor: "#000080"
 }
-function Header(props) {
+function Header() {
   return (
 <div className="navbar navbar-dark" style={navStyle}>
   <a className="navbar-brand" href="#">Employee Tracker</a>
