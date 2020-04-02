@@ -1,4 +1,5 @@
 import React from "react";
+import Moment from "react-moment"
 function Table(props) {
     return (
 <table className="table table-striped">
@@ -18,7 +19,7 @@ function Table(props) {
       <td>{props.firstname} {props.lastname}</td>
       <td>{props.phone}</td>
       <td><a href={`mailto:${props.email}`}>{props.email}</a></td>
-      <td>{props.birth}</td>      
+      <td><Moment format= "MM/DD/YYYY">{props.birth}</Moment></td>
     </tr>
   </tbody>
 </table>
