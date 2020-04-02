@@ -7,7 +7,7 @@ import API from "../utils/API"
 class EmployeeContainer extends Component {
 
     state = {
-        result: {},
+        result: [],
         search: ""
       };
 
@@ -17,15 +17,17 @@ class EmployeeContainer extends Component {
 
       peoplePopulate = () => {
         API.getUsers()
-          .then(res => this.setState({ result: res.data }))
+        .then(res => this.setState({ result: res.data.results }))
+          .then(console.log(this.state.result))
           .catch(err => console.log(err));
       };
 
-    //   searchPeople = query => {
-    //     API.search(query)
-    //       .then(res => this.setState({ result: res.data }))
-    //       .catch(err => console.log(err));
-    //   };
+      searchPeople = query => {
+        API.search(query)
+          .then(res => this.setState({ result: res.data.results }))
+          .then(console.log(this.state.result))
+          .catch(err => console.log(err));
+      };
 
       handleInputChange  = event =>{
         const name = event.target.name;
@@ -37,14 +39,15 @@ class EmployeeContainer extends Component {
 
       handleFormSubmit = event =>{
         event.preventDefault();
-        this.peoplePopulate(this.state.search)
+        this.searchPeople(this.state.search)
         console.log(this.state.result)
       }
       
     render(){
-        let people;
-        people = this.state.result.results.map(person=>
+       let people;
+        people = this.state.result.map(person=>
         <Table 
+            key = {person.id.value}
             firstname ={person.name.first} 
             lastname= {person.name.last} 
             pic={person.picture.thumbnail} 
