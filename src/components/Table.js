@@ -17,7 +17,7 @@ function Table(props) {
       <th scope="row"><img src={props.pic} alt={props.name}/></th>
       <td>{props.firstname} {props.lastname}</td>
       <td>{props.phone}</td>
-      <td>{props.email}</td>
+      <td><a href={`mailto:${props.email}`}>{props.email}</a></td>
       <td>{props.birth}</td>      
     </tr>
   </tbody>

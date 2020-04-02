@@ -4,6 +4,7 @@ import Header from "./Header";
 import Table from "./Table"
 import API from "../utils/API"
 
+
 class EmployeeContainer extends Component {
 
     state = {
@@ -50,7 +51,7 @@ class EmployeeContainer extends Component {
             key = {person.id.value}
             firstname ={person.name.first} 
             lastname= {person.name.last} 
-            pic={person.picture.thumbnail} 
+            pic={person.picture.large} 
             phone={person.phone} 
             email={person.email}
             birth={person.dob.date} 
