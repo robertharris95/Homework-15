@@ -24,10 +24,8 @@ class EmployeeContainer extends Component {
       };
 
       searchPeople = query => {
-        API.search(query)
-          .then(res => this.setState({ result: res.data.results }))
-          .then(console.log(this.state.result))
-          .catch(err => console.log(err));
+        let fiteredPeople = this.state.result.filter(person => person.name.first.includes(query)||person.name.last.includes(query))
+          this.setState({result:fiteredPeople})
       };
 
       handleInputChange  = event =>{
@@ -41,7 +39,6 @@ class EmployeeContainer extends Component {
       handleFormSubmit = event =>{
         event.preventDefault();
         this.searchPeople(this.state.search)
-        console.log(this.state.result)
       }
       
     render(){
@@ -58,7 +55,11 @@ class EmployeeContainer extends Component {
         />)
         return(
             <>
-            <Header/>
+            <Header
+            search={this.state.search}
+            handleFormSubmit={this.handleFormSubmit}
+            handleInputChange={this.handleInputChange}
+            />
             <br/>
             <br/>
             <Container>
