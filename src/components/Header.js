@@ -24,6 +24,12 @@ function Header(props) {
     >
       Search
     </button>
+    <button 
+      className="btn btn-light  ml-sm-4 my-2 my-sm-0" 
+      onClick={props.peoplePopulate}
+    >
+      Reset
+    </button>
   </form>
 </div>
   );

@@ -18,17 +18,16 @@ class EmployeeContainer extends Component {
 
       peoplePopulate = () => {
         API.getUsers()
-        .then(res => this.setState({ result: res.data.results }))
-          .then(console.log(this.state.result))
-          .catch(err => console.log(err));
+            .then(res => this.setState({ result: res.data.results }))
+            .catch(err => console.log(err));
       };
 
       searchPeople = query => {
-        let fiteredPeople = this.state.result.filter(person => person.name.first.includes(query)||person.name.last.includes(query))
-          this.setState({result:fiteredPeople})
+            let fiteredPeople = this.state.result.filter(person => person.name.first.includes(query)||person.name.last.includes(query))
+            this.setState({result:fiteredPeople})
       };
 
-      handleInputChange  = event =>{
+      handleInputChange  = event => {
         const name = event.target.name;
         const value = event.target.value;
         this.setState({
@@ -36,10 +35,12 @@ class EmployeeContainer extends Component {
         });
       };
 
-      handleFormSubmit = event =>{
+      handleFormSubmit = event => {
         event.preventDefault();
         this.searchPeople(this.state.search)
-      }
+      };
+
+
       
     render(){
        let people;
@@ -56,6 +57,7 @@ class EmployeeContainer extends Component {
         return(
             <>
             <Header
+            reset = {this.peoplePopulate}
             search={this.state.search}
             handleFormSubmit={this.handleFormSubmit}
             handleInputChange={this.handleInputChange}
